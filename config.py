@@ -1,6 +1,7 @@
 # Arden Boettcher
-# Insert date here
-# Insert title here
+# 3/3/25
+# Config
+
 
 # Screen size constants
 WIDTH = 500
