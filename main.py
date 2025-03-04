@@ -24,6 +24,14 @@ def main_events():
       return False
   return True
 
+def center_text(text: str, font: pygame.font.Font, color: tuple) -> tuple[pygame.Surface, pygame.Rect]:
+  words = font.render(text, False, color)
+  text_rect = words.get_rect()
+  text_rect.center = (config.WIDTH / 2, config.HEIGHT / 2)
+  return words, text_rect
+
+def draw_text(surface: pygame.Surface, text: tuple):
+  surface.blit(text[0], text[1])
 
 
 # Main loop
@@ -31,9 +39,8 @@ def main():
   # The bool for the main loop
   running = True
 
-  text = main_font.render("THIS IS TEXT", False, config.BLACK)
-  text_rect = text.get_rect()
-  text_rect.center = (config.WIDTH / 2, config.HEIGHT / 2)
+  # Returns centered text
+  text = center_text("THIS IS TEXT", main_font, config.BLACK)
 
   while running:
 
@@ -43,7 +50,8 @@ def main():
     # Fills window
     screen.fill(config.WHITE)
 
-    screen.blit(text, text_rect)
+    # Draws the text
+    draw_text(screen, text)
 
     # Updates the Display
     pygame.display.flip()
