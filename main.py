@@ -89,7 +89,7 @@ def main():
     text_color = config.rainbow(text_color)
 
     # Draws the text
-    draw_text(screen, main_font, "text", text_pos, text_color, centered = True, alias = True, degrees = degrees)
+    draw_text(screen, main_font, "text", text_pos, text_color, centered = True, alias = True, degrees = degrees)x
 
     # Updates the Display
     pygame.display.flip()
