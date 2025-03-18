@@ -39,7 +39,7 @@ def draw_text(surface: pygame.Surface, font: pygame.font.Font, words: str, pos: 
   text_rect = text.get_rect(topleft=pos)
 
   if centered:
-    text_rect = text.get_rect(center=pos)
+    text_rect.center = pos
 
   surface.blit(text, text_rect)
   return text, text_rect
@@ -61,9 +61,13 @@ def main():
 
   text_pos = [config.WIDTH / 2, config.HEIGHT / 2]
 
+  text_color = config.RED
+
   while running:
 
     degrees += 1
+    if degrees >= 360:
+      degrees -= 360
 
     # Call events / update running
     running = main_events()
@@ -82,8 +86,10 @@ def main():
     # Fills window
     screen.fill(config.BLACK)
 
+    text_color = config.rainbow(text_color)
+
     # Draws the text
-    draw_text(screen, main_font, "text", text_pos, config.WHITE, centered = True, alias = True, degrees = degrees)
+    draw_text(screen, main_font, "text", text_pos, text_color, centered = True, alias = True, degrees = degrees)
 
     # Updates the Display
     pygame.display.flip()
